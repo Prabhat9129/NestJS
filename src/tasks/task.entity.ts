@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { Users } from 'src/auth/auth.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { TaskStatus } from './tasks.model';
@@ -18,5 +19,6 @@ export class Task {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @ManyToOne((_type) => Users, (Users) => Users.tasks, { eager: false })
+  @Exclude({ toPlainOnly: true })
   user: Users;
 }
